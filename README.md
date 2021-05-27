@@ -1,2 +1,2 @@
-# Gesit-n-de-Hoteles
+# Frontend de Hoteles
 Proyecto Final de la segunda unidad
