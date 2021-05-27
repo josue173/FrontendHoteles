@@ -1,0 +1,22 @@
+.principal{
+  /* padding: 30px; */
+  margin: 100px;
+  margin-right: 100px;
+  border-radius: 30px;
+  width: 1200px;
+}
+
+img{
+  height: 240px;
+  width: 350px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+p{
+  font-size: 25px;
+}
+
+.datos{
+  width: 400px;
+}

@@ -1,0 +1,261 @@
+<br />
+<h1>Listado de hoteles</h1>
+<hr />
+
+<table class="table table-striped table-responsive table-bordered size">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Email</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Adminitrador</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hoteles of hotelList">
+      <th scope="row">{{ hoteles._id }}</th>
+      <td>{{ hoteles.nombre }}</td>
+      <td>{{ hoteles.direccion }}</td>
+      <td>{{ hoteles.descripcion }}</td>
+      <td>{{ hoteles.administradorHotel }}</td>
+      <td>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="verHotel(hoteles._id)"
+            data-bs-toggle="modal"
+            data-bs-target="#modalEditar"
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="verHotel(hoteles._id)"
+            data-bs-toggle="modal"
+            data-bs-target="#modalEliminar"
+          >
+            Eliminar
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Modal Eliminar Usuario -->
+
+<div
+  class="modal fade"
+  id="modalEliminar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Hotel</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        ¿Esta seguro de que desea eliminar el Hotel,
+        {{ hotelMostrar.nombre }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          No
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="eliminarHotel(hotelMostrar._id)"
+        >
+          Si, eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar Usuario -->
+
+<div
+  class="modal fade"
+  id="modalEditar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputUsuario" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputUsuario"
+              name="usuario"
+              #usuario="ngModel"
+              [(ngModel)]="hotelMostrar.nombre"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInput" class="form-label"
+              >Direccion</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInput"
+              name="direccion"
+              #direccion="ngModel"
+              [(ngModel)]="hotelMostrar.direccion"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Descripcion</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              name="descripcion"
+              #descripcion="ngModel"
+              [(ngModel)]="hotelMostrar.descripcion"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputImagen" class="form-label"
+              >Imagen (URL)</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="imagen"
+              name="inputImagen"
+              #imagen="ngModel"
+              [(ngModel)]="hotelMostrar.imagen"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="editarHotel()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<br />
+<h1>Agregar Hotel</h1>
+<hr />
+
+<form class="row g-3 hotel">
+  <div class="col-md-6">
+    <label for="inputNombre" class="form-label">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputNombre"
+      name="nombre"
+      #nombre="ngModel"
+      [(ngModel)]="hotelModel.nombre"
+    />
+  </div>
+  <div class="col-md-6">
+    <label for="inputUsuarioAdmin" class="form-label">Usuario</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputUsuarioAdmin"
+      name="idAdministrador"
+      [(ngModel)]="idAdministrador"
+    />
+  </div>
+  <div class="col-md-6">
+    <label for="inputDireccion" class="form-label">Direccion</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputDireccion"
+      name="direccion"
+      #direccion="ngModel"
+      [(ngModel)]="hotelModel.direccion"
+    />
+  </div>
+  <div class="col-12">
+    <label for="inputDescrippcion" class="form-label">Descipcion</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputDescrippcion"
+      name="descripcion"
+      #descripcion="ngModel"
+      [(ngModel)]="hotelModel.descripcion"
+    />
+  </div>
+  <div class="col-12">
+    <label for="inputImagen" class="form-label">Imagen (URL)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputImagen"
+      name="imagen"
+      #imagen="ngModel"
+      [(ngModel)]="hotelModel.imagen"
+    />
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" (click)="agregarHoteles()">
+      Agregar
+    </button>
+  </div>
+</form>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

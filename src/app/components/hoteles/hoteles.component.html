@@ -1,0 +1,94 @@
+<!-- Informacion del hotel -->
+
+<div class="card container">
+  <img src="{{ hotelesList.imagen }}" />
+  <div class="card-body">
+    <h5 class="card-title titulo">{{ hotelesList.nombre }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ hotelesList.direccion }}</h6>
+    <p class="card-text">
+      {{ hotelesList.descripcion }}
+    </p>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;" *ngFor="let hoteles of hotelesList">
+  <img src="{{ hoteles. imagen}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<hr />
+
+<!-- Habitaciones del hotel -->
+
+<h2 class="habitacion">Habitaciones</h2>
+
+<table class="table table-hover table-responsive size">
+  <thead>
+    <tr>
+      <th scope="col">Habitación</th>
+      <th scope="col" class="des">Precio</th>
+      <th scope="col" class="des">Estado</th>
+      <th scope="col" class="des">Información</th>
+      <th scope="col" class="des">Link reserva</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let habitaciones of habitacionesList">
+      <td>{{ habitaciones.nombreHabitacion }}</td>
+      <td class="des">{{ habitaciones.precio }}</td>
+      <td class="des">{{ habitaciones.estado }}</td>
+      <td class="des">
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="navegarHabitacion(habitaciones._id)"
+        >
+          Detalle
+        </button>
+      </td>
+      <td class="des2">
+        <button
+          type="button"
+          class="btn btn-danger"      
+          *ngIf="habitaciones.estado === 'Disponible'"    
+          (click)="navegarReservaciones(habitaciones._id)"
+        >
+          Reservar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<!-- Servicios del hotel -->
+
+<div class="container secundario">
+  <h2>Servicios</h2>
+  <div class="row contenedor">
+    <div class="col-xs-12 col-sm-4" *ngFor="let servicios of serviciosList">
+      <div class="card mb4" style="max-width: 21rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ servicios.nombreServicio }}</h5>
+          <p class="card-text">
+            {{ servicios.descripcionServicio }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

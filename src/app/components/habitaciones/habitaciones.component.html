@@ -1,0 +1,34 @@
+<div class="card mb-3 principal">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ habitacionList.imagen }}" alt="..." />
+    </div>
+    <div class="col-md-8 datos">
+      <div class="card-body">
+        <h2 class="card-title">{{ habitacionList.nombreHabitacion }}</h2>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Precio por noche: {{ habitacionList.precio }}
+        </h6>
+        <p class="card-text">
+          {{ habitacionList.descripcion }}
+        </p>
+        <p class="card-text">Disponibilidad: {{ habitacionList.estado }}</p>
+        <button
+          type="button"
+          class="btn btn-light"
+          *ngIf="habitacionList.estado === 'Disponible'"
+          (click)="navegarReservaciones(habitacionList._id)"
+        >
+          Reservar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

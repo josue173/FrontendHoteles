@@ -1,0 +1,52 @@
+<br />
+<h1>Registrar administradores de Hotel</h1>
+<hr />
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <!-- <form (ngSubmit)="getToken()"> -->
+      <form>
+        <div class="mb-3">
+          <label for="inputUsuario" class="form-label">Usuario</label>
+          <input
+            type="email"
+            class="form-control"
+            id="inputUsuario"
+            name="usuario"
+            #usuario="ngModel"
+            [(ngModel)]="usuarioModel.usuario"
+          />
+          <div id="emailHelp" class="form-text">
+            No compartas tus credenciales con nadie.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="inputContrasena" class="form-label">Contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            id="inputContrasena"
+            name="contrasena"
+            #contrasena="ngModel"
+            [(ngModel)]="usuarioModel.contrasena"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="agregarAdminHotel()"
+        >
+          Ingresar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

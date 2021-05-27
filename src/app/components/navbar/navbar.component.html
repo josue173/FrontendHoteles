@@ -1,0 +1,163 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar">
+  <div class="container-fluid">
+    <img src="./assets/hotel.png" alt="" width="30" height="24" />
+    <a class="navbar-brand" href="#">Hotelgram</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/login"
+            routerLinkActive="active"
+            *ngIf="!_usuarioService.getIdentidad()"
+            >Login</a
+          >
+        </li>
+
+        <!-- ADMINISTRADOR APP -->
+
+        <li class="nav-item">
+          <!-- *ngIf="_usuarioService.getIdentidad()" ES PARA VER SI ESTA LOGEADO -->
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminApp"
+            routerLinkActive="active"
+            *ngIf="
+              _usuarioService.getIdentidad() &&
+              identidad.rol === 'AdministradorApp'
+            "
+            >Administrar de Hotel</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminAppUsuarios"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'AdministradorApp' &&
+              _usuarioService.getIdentidad()
+            "
+            >Usuarios</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminAppHoteles"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'AdministradorApp' &&
+              _usuarioService.getIdentidad()
+            "
+            >Hoteles</a
+          >
+        </li>
+
+        <!-- ADMINISTRADOR HOTEL -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminHotel"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'AministradorHotel' &&
+              _usuarioService.getIdentidad()
+            "
+            >Hotel</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminHotelHabitaciones"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'AministradorHotel' &&
+              _usuarioService.getIdentidad()
+            "
+            >Habitaciones</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminHotelEventos"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'AministradorHotel' &&
+              _usuarioService.getIdentidad()
+            "
+            >Eventos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/adminHotelServicios"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'AministradorHotel' &&
+              _usuarioService.getIdentidad()
+            "
+            >Servicios</a
+          >
+        </li>
+
+        <!-- CLIENTES -->
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/perfil"
+            routerLinkActive="active"
+            *ngIf="
+              identidad.rol === 'cliente' && _usuarioService.getIdentidad()
+            "
+            >Perfil</a
+          >
+        </li>
+      </ul>
+    </div>
+    <form class="d-flex" (ngSubmit)="buscar()" autocomplete="off">
+      <input
+        class="form-control me-2"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        name="busquedaList"
+        [(ngModel)]="busquedaList"
+      />
+      <button class="btn btn-outline-info" type="submit">Search</button>
+    </form>
+    <button
+      class="btn btn-outline-info cerrar"
+      type="submit"
+      *ngIf="_usuarioService.getIdentidad()"
+      (click)="cerrarSesion()"
+    >
+      Cerrar Sesión
+    </button>
+  </div>
+</nav>

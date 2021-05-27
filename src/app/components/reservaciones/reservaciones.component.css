@@ -1,0 +1,47 @@
+.container{
+  margin-top: 30px;
+  width: 90%;
+  height: 580px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.datos{
+  width: 100%;
+  height: 30%;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background: whitesmoke;
+  text-align: center;
+  /* float: left; */
+}
+
+h2{
+  text-align: center;
+}
+
+.subdatos{
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: left;
+  text-align: center;
+}
+
+p{
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+h4{
+  float: left;
+}
+
+.datos-reservacio{
+  text-align: center;
+  height: 220px;
+  background: whitesmoke;
+}

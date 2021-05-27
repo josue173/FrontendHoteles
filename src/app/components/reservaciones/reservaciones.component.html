@@ -1,0 +1,64 @@
+<div class="card container">
+  <div class="datos">
+    <div class="subdatos">
+      <h2 class="card-title">Datos personales</h2>
+      <hr />
+      <h4 class="card-subtitle">Nombre</h4>
+      <p class="card-text">{{ idUsuarioModel.usuario }}</p>
+      <h4 class="card-subtitle">Email</h4>
+      <p class="card-text">{{ idUsuarioModel.email }}</p>
+      <h4 class="card-subtitle">Rol</h4>
+      <p class="card-text">{{ idUsuarioModel.rol }}</p>
+    </div>
+  </div>
+
+  <div class="datos-reservacion">
+    <h2 class="card-title">Datos de la reservación</h2>
+    <hr />
+    <h4 class="card-subtitle">Habitación</h4>
+    <p class="card-text">{{ habitacionList.nombreHabitacion }}</p>
+    <h4 class="card-subtitle">Precio</h4>
+    <p class="card-text">{{ habitacionList.precio }}</p>
+    <br />
+    <h4 class="card-subtitle"></h4>
+    <br />
+    <hr />
+    <h4 class="card-subtitle">Fecha incio</h4>
+    <input
+      class="form-control"
+      type="date"
+      min="2019-01-01"
+      name="fechaInicio"
+      #fechaInicio="ngModel"
+      [(ngModel)]="reservaModel.fechaInicio"
+    />
+    <br />
+    <h4 class="card-subtitle">Fecha fin</h4>
+    <br />
+    <br />
+    <input
+      class="form-control"
+      type="date"
+      value="tomorrow"
+      name="fechaFin"
+      #fechaFin="ngModel"
+      [(ngModel)]="reservaModel.fechaFin"
+    />
+    <br />
+    <button
+      type="button"
+      class="btn btn-light"
+      (click)="reservar(habitacionList._id)"
+    >
+      Reservar
+    </button>
+  </div>
+  <hr />
+</div>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

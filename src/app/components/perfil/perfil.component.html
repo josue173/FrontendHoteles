@@ -1,0 +1,197 @@
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+    <div class="row container d-flex">
+      <div class="col-xl-6 col-md-12">
+        <div class="card user-card-full">
+          <div class="row m-l-0 m-r-0">
+            <div class="col-sm-4 bg-c-lite-green user-profile">
+              <div class="card-block text-center text-white">
+                <div class="m-b-25">
+                  <img
+                    src="https://img.icons8.com/bubbles/100/000000/user.png"
+                    class="img-radius"
+                    alt="User-Profile-Image"
+                  />
+                </div>
+                <h6 class="f-w-600">{{ identidad.usuario }}</h6>
+                <p>{{ identidad._id }}</p>
+                <i
+                  class="
+                    mdi mdi-square-edit-outline
+                    feather
+                    icon-edit
+                    m-t-10
+                    f-16
+                  "
+                ></i>
+                <i
+                  class="
+                    mdi mdi-square-edit-outline
+                    feather
+                    icon-edit
+                    m-t-10
+                    f-16
+                  "
+                ></i>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="card-block">
+                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">
+                  Información general
+                </h6>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p class="m-b-10 f-w-600">Email</p>
+                    <h6 class="text-muted f-w-400">{{ identidad.email }}</h6>
+                  </div>
+                  <div class="col-sm-6">
+                    <p class="m-b-10 f-w-600">Rol</p>
+                    <h6 class="text-muted f-w-400">{{ identidad.rol }}</h6>
+                  </div>
+                </div>
+                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
+                  Sobre hospedajes
+                </h6>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <p class="m-b-10 f-w-600">Estado</p>
+                    <h6 class="text-muted f-w-400">{{ identidad.estado }}</h6>
+                  </div>
+                  <div class="col-sm-6">
+                    <p class="m-b-10 f-w-600">Hotel de hospedaje</p>
+                    <h6 class="text-muted f-w-400">
+                      {{ identidad.hotelHospedado }}
+                    </h6>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditarUsuario"
+                  (click)="obtenerUsuarioId(identidad._id)"
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary segundo"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEliminarUsuario"
+                  (click)="obtenerUsuarioId(identidad._id)"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar Perfil -->
+
+<div
+  class="modal fade"
+  id="modalEditarUsuario"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputUsuario" class="form-label">Usuario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputUsuario"
+              name="usuario"
+              #usuario="ngModel"
+              [(ngModel)]="idUsuarioModel.usuario"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="idUsuarioModel.email"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="editarCuenta()"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Eliminar Perfil -->
+<div
+  class="modal fade"
+  id="modalEliminarUsuario"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuario</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        ¿Esta seguro de que desea eliminar el Usuario,
+        {{ idUsuarioModel.usuario }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          No
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="eliminarCuenta(idUsuarioModel._id)"
+        >
+          Si, eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-light text-center text-lg-start footer">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

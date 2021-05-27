@@ -1,0 +1,57 @@
+<section class="Form my-4 mx-5">
+  <div class=" card container">
+    <div class="row no-gutters">
+      <div class="col-lg-5">
+        <img src="./assets/hotelLogin.jpg" class="img-fluid" alt="" />
+      </div>
+      <div class="col-lg-7 px-5 pt-5">
+        <h1 class="font-weight-bold">Registro</h1>
+        <br />
+        <form (ngSubmit)="registrar()">
+          <div class="mb-3">
+            <label for="inputUsuario" class="form-label">Usuario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputUsuario"
+              name="usuario"
+              #usuario="ngModel"
+              [(ngModel)]="usuariosModel.usuario"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              name="email"
+              #email="ngModel"
+              [(ngModel)]="usuariosModel.email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword" class="form-label">Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              name="contrasena"
+              #contrasena="ngModel"
+              [(ngModel)]="usuariosModel.contrasena"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

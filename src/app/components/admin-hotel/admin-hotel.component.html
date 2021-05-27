@@ -1,0 +1,66 @@
+<!-- Ver reservaciones -->
+
+<br />
+<h1>Ver Reservaciones</h1>
+<hr />
+
+<table class="table table-striped table-responsive table-bordered size">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Fecha Llegada</th>
+      <th scope="col">Fecha Salida</th>
+      <th scope="col">Habitación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservaciones of reservacionesList">
+      <th scope="row">{{ reservaciones._id }}</th>
+      <td>{{ reservaciones.usuario }}</td>
+      <td>{{ reservaciones.fechaInicio }}</td>
+      <td>{{ reservaciones.fechaFin }}</td>
+      <td>{{ reservaciones.habitacion }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Ver Hospedajes -->
+
+<br />
+<h1>Ver Hospedajes</h1>
+<hr />
+
+<table class="table table-striped table-responsive table-bordered size">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Email</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuarios of usuariosList">
+      <th scope="row">{{ usuarios._id }}</th>
+      <td>{{ usuarios.usuario }}</td>
+      <td>{{ usuarios.email }}</td>
+      <td>{{ usuarios.estado }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="hayErrorReservacion" class="alert alert-danger">
+  Ho hay reservaciones para mostrar
+</div>
+
+<div *ngIf="hayErrorHospedajes == true" class="alert alert-danger">
+  Ho hay hospedajes para mostrar
+</div>
+
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright
+    <h3>by Antony Toribio</h3>
+  </div>
+</footer>

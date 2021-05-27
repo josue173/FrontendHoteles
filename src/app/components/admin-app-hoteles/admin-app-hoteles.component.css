@@ -1,0 +1,15 @@
+h1 {
+  text-align: center;
+}
+
+.hotel {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.size {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
